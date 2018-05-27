@@ -1,0 +1,28 @@
+version: '3'
+services:
+  flume:
+    build: ./flume
+    ports:
+     - 18000:18000
+     - 18001:18001
+    depends_on:
+      - spark
+  generator:
+    build: ./generator
+    depends_on: 
+      - flume 
+  mysql:
+    build: ./mysql
+    ports: 
+      - 3307:3306
+  monitor:
+    build: ./monitor
+    depends_on:
+      - mysql
+  spark:
+    build: ./spark-streaming
+    ports:
+      - 8080:8080
+      - 7077:7077
+    depends_on:
+      - mysql
