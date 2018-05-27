@@ -49,4 +49,4 @@ ADD pom.xml .
 
 RUN mvn clean install
 
-ENTRYPOINT ["java","-jar","target/soark-streaming.jar"]
+ENTRYPOINT ["java","-jar","target/spark-streaming.jar"]

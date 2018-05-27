@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Preparing FlumeStream ... waiting for mysql to complete ... ");
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(30);
         Transporter.startUp();
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("FlumeStreamingApp");
         JavaStreamingContext jsc = new JavaStreamingContext(sparkConf, new Duration(30_000)); // initialize with polling interval
