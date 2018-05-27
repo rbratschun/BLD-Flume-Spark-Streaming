@@ -9,10 +9,14 @@ import org.apache.spark.streaming.flume.FlumeUtils;
 import org.apache.spark.streaming.flume.SparkFlumeEvent;
 import org.apache.spark.streaming.api.java.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        System.out.println("Preparing FlumeStream ... waiting for mysql to complete ... ");
+        TimeUnit.SECONDS.sleep(5);
         Transporter.startUp();
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("FlumeStreamingApp");
         JavaStreamingContext jsc = new JavaStreamingContext(sparkConf, new Duration(30_000)); // initialize with polling interval
