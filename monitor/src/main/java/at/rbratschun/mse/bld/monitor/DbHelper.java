@@ -1,22 +1,35 @@
 package at.rbratschun.mse.bld.monitor;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.List;
+import java.sql.*;
 
-public class DbHelper {
+ class DbHelper {
 
-    private static Connection conn;
-    public static void getRecentEntries() throws Exception {
-        conn = DriverManager.getConnection("jdbc:mysql://mysql:3306/statistics?user=docker&password=docker");
-        Statement stmt = conn.createStatement();
-        ResultSet resultSet = stmt.executeQuery("SELECT * FROM product_statistics WHERE timestamp BETWEEN timestamp(DATE_SUB(NOW(), INTERVAL 5 MINUTE)) AND timestamp(NOW())");
+    private static String getConnString() {
+            String host = "mysql";
+            String port = "3306";
+            return "jdbc:mysql://"+host + ":" + port + "/statistics?user=docker&password=docker";
+    }
 
+    private static Connection connect() throws SQLException {
+        return DriverManager.getConnection(getConnString());
+    }
+
+    static void getRecentEntries() throws Exception {
+        Connection conn = connect();
+        ResultSet resultSet = conn.createStatement().executeQuery(DbStatements.RecentEntries);
         while(resultSet.next()) {
             System.out.println(Entry.transform(resultSet));
         }
-        if(conn != null ) conn.close();
+        conn.close();
+    }
+
+    static void initialize() {
+        // create tabkle if it does not exist
+        try (Connection conn = connect() ){
+            conn.createStatement().execute(DbStatements.CreateTable);
+        }
+        catch(SQLException e) {
+            System.out.println(e);
+        }
     }
 }

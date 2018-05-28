@@ -1,9 +1,14 @@
 package at.rbratschun.mse.bld.monitor;
 
+
+import java.util.concurrent.TimeUnit;
+
 public class Main {
     public static void main (String args[]) throws Exception {
 
-        Thread.sleep(15_000);
+        System.out.println("Starting monitor, waiting for mysql to complete");
+        TimeUnit.SECONDS.sleep(45);
+        DbHelper.initialize();
 
         while(true) {
             try {
@@ -13,7 +18,7 @@ public class Main {
                 System.out.println(e);
             }
             finally {
-                Thread.sleep(5_000);
+                TimeUnit.SECONDS.sleep(5);
             }
         }
     }

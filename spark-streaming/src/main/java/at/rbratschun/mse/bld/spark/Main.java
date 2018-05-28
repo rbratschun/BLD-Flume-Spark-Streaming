@@ -9,15 +9,11 @@ import org.apache.spark.streaming.flume.FlumeUtils;
 import org.apache.spark.streaming.flume.SparkFlumeEvent;
 import org.apache.spark.streaming.api.java.*;
 
-import java.util.concurrent.TimeUnit;
-
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Preparing FlumeStream ... waiting for mysql to complete ... ");
-        TimeUnit.SECONDS.sleep(30);
-        Transporter.startUp();
+        System.out.println("Preparing FlumeStream ...");
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("FlumeStreamingApp");
         JavaStreamingContext jsc = new JavaStreamingContext(sparkConf, new Duration(30_000)); // initialize with polling interval
         JavaReceiverInputDStream<SparkFlumeEvent> flumeStream = FlumeUtils.createStream(jsc, "0.0.0.0", 18020); // listen to port 18020
@@ -39,7 +35,7 @@ public class Main {
             statistics
                 .groupBy(x -> x.getProduct_id())
                 .map(ProductStatistics::aggregate)
-                .foreachPartition(new Transporter());
+                .foreachPartition(new Transaction());
         }
     }
 }

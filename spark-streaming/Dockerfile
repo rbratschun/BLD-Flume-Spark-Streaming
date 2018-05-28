@@ -1,11 +1,3 @@
-FROM maven as build
-
-COPY ./src /app
-COPY pom.xml /app
-RUN mkdir /app/target && touch /app/target/generator.jar
-WORKDIR /app
-RUN mvn clean package
-
 FROM ubuntu:16.04
 MAINTAINER Roman Bratschun <rbratschun@gmail.com>
 
