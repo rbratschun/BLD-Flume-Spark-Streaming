@@ -24,13 +24,13 @@ public class Main {
                 String eventJson =objectMapper.writeValueAsString(event);
                 final FlumeEvent flumeEvent = new FlumeEvent(new HashMap<>(), eventJson);
                 final String flumeJson = objectMapper.writeValueAsString(Arrays.asList(flumeEvent));
-                System.out.println(flumeJson);
+                // System.out.println(flumeJson);
                 final int port = "view".equals(event.getType()) ? 18000 : 18001;
                 final String response = Unirest.post(url+port)
                         .body(flumeJson)
                         .asString().getStatusText();
-                System.out.println("response: " + response);
-                TimeUnit.SECONDS.sleep(2);
+                // System.out.println("response: " + response);
+                TimeUnit.MILLISECONDS.sleep(150);
             }
             catch(JsonProcessingException | UnirestException exp) {
                 System.out.println(exp);
