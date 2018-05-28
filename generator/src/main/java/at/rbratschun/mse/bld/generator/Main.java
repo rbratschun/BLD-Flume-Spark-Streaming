@@ -24,7 +24,7 @@ public class Main {
                 String eventJson =objectMapper.writeValueAsString(event);
                 final FlumeEvent flumeEvent = new FlumeEvent(new HashMap<>(), eventJson);
                 final String flumeJson = objectMapper.writeValueAsString(Arrays.asList(flumeEvent));
-                // System.out.println(flumeJson);
+                System.out.println(flumeJson);
                 final int port = "view".equals(event.getType()) ? 18000 : 18001;
                 final String response = Unirest.post(url+port)
                         .body(flumeJson)
