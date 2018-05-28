@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER Roman Bratschun <rbratschun@gmail.com>
 
 RUN set -x && \
 apt-get update && apt-get install -y net-tools curl software-properties-common && \

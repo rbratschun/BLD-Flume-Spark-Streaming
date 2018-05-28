@@ -26,6 +26,7 @@ public class Transaction implements VoidFunction<Iterator<ProductStatistics>> {
             while(it.hasNext()) {
                 save(it.next());
             }
+            conn.close();
         }
         catch(Exception e) {
             System.out.println(e);
