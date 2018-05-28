@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.generator;
+package at.mse.bld.generator;
 
 public class WebSiteEvent {
     private long customer_id;

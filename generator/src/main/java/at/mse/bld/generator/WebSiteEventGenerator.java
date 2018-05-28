@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.generator;
+package at.mse.bld.generator;
 
 import java.util.Arrays;
 import java.util.List;

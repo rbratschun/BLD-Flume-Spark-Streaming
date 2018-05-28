@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.spark;
+package at.mse.bld.spark;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.spark.streaming.flume.SparkFlumeEvent;

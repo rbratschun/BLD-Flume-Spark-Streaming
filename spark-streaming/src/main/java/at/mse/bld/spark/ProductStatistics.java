@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.spark;
+package at.mse.bld.spark;
 
 import scala.Tuple2;
 import java.io.Serializable;

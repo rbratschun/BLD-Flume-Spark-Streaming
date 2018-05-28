@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>at.rbratschun.mse.bld</groupId>
+    <groupId>at.mse.bld</groupId>
     <artifactId>docker-monitor</artifactId>
     <version>1.0</version>
     <dependencies>
@@ -56,7 +56,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>at.rbratschun.mse.bld.monitor.Main</mainClass>
+                                    <mainClass>at.mse.bld.monitor.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

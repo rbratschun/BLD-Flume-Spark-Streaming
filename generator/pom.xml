@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>at.rbratschun.mse.bld.spark</groupId>
+    <groupId>at.mse.bld.spark</groupId>
     <artifactId>docker-generator</artifactId>
     <version>1.0</version>
 
@@ -70,7 +70,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>at.rbratschun.mse.bld.generator.Main</mainClass>
+                                    <mainClass>at.mse.bld.generator.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

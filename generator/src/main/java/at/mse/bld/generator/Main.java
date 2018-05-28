@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.generator;
+package at.mse.bld.generator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package at.rbratschun.mse.bld.spark;
+package at.mse.bld.spark;
 
 import org.apache.spark.api.java.function.VoidFunction;
 
