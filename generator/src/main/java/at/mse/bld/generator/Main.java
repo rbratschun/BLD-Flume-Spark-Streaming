@@ -16,16 +16,19 @@ public class Main {
         final String url = "http://flume:";
 
         TimeUnit.SECONDS.sleep(5);
-
+        ObjectMapper objectMapper = new ObjectMapper();
         while(true) {
             try {
+                // generate event
                 WebSiteEvent event = WebSiteEventGenerator.generate();
-                ObjectMapper objectMapper = new ObjectMapper();
-                String eventJson =objectMapper.writeValueAsString(event);
+                String eventJson = objectMapper.writeValueAsString(event);
+                // transform to flumeEvent
                 final FlumeEvent flumeEvent = new FlumeEvent(new HashMap<>(), eventJson);
                 final String flumeJson = objectMapper.writeValueAsString(Arrays.asList(flumeEvent));
                 System.out.println(flumeJson);
+                // send to different flume source by port depending on event type
                 final int port = "view".equals(event.getType()) ? 18000 : 18001;
+                // send flumeevent to flume source
                 final String response = Unirest.post(url+port)
                         .body(flumeJson)
                         .asString().getStatusText();
