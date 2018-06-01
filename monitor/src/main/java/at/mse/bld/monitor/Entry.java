@@ -9,9 +9,9 @@ public class Entry {
     private int purchases;
     private int views;
 
-    private Entry (String minute, long product_id, double revenue, int purchases, int views) {
-        this.minute = minute;
+    private Entry (long product_id, String minute, double revenue, int purchases, int views) {
         this.product_id = product_id;
+        this.minute = minute;
         this.revenue = revenue;
         this.purchases = purchases;
         this.views = views;
@@ -19,11 +19,11 @@ public class Entry {
 
     static Entry transform(ResultSet resultSet) throws Exception{
         return new Entry(
-            resultSet.getString(2),
-            resultSet.getLong(3),
-            resultSet.getDouble(4),
-            resultSet.getInt(5),
-            resultSet.getInt(6)
+                resultSet.getLong(1),
+                resultSet.getString(2),
+                resultSet.getDouble(3),
+                resultSet.getInt(4),
+                resultSet.getInt(5)
         );
     }
 

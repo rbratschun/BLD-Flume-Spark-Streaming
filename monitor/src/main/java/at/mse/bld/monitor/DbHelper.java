@@ -24,7 +24,7 @@ import java.sql.*;
     }
 
     static void initialize() {
-        // create tabkle if it does not exist
+        // create table if it does not exist
         try (Connection conn = connect() ){
             conn.createStatement().execute(DbStatements.CreateTable);
         }
