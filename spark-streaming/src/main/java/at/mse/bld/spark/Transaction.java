@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Transaction implements VoidFunction<Iterator<ProductStatistics>> {
 
     private static Connection conn;
-    private static final String InsertSQL = "INSERT INTO product_statistics (product_id, revenue, views, purchases, minute) VALUES (?, ?, ?, ?, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'))";
+    private static final String InsertSQL = "REPLACE INTO product_statistics (product_id, revenue, views, purchases, minute) VALUES (?, ?, ?, ?, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'))";
 
     private static String getConnString() {
         String host = "mysql";
