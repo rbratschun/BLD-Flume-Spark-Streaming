@@ -7,6 +7,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -33,7 +34,8 @@ public class Main {
                         .body(flumeJson)
                         .asString().getStatusText();
                 // System.out.println("response: " + response);
-                TimeUnit.MILLISECONDS.sleep(150);
+                // generate 10 - 100 events per second
+                TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextInt(10, 100));
             }
             catch(JsonProcessingException | UnirestException exp) {
                 System.out.println(exp);

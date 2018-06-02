@@ -7,7 +7,7 @@ public class Main {
     public static void main (String args[]) throws Exception {
 
         System.out.println("Starting monitor, waiting for mysql to complete");
-        TimeUnit.SECONDS.sleep(30);
+        TimeUnit.SECONDS.sleep(20);
         // create table
         DbHelper.initialize();
 

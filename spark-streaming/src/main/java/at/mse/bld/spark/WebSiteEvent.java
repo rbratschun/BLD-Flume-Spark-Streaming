@@ -51,9 +51,8 @@ public class WebSiteEvent implements Serializable {
         this.type = type;
     }
 
-    public WebSiteEvent() {
+    public WebSiteEvent() { }
 
-    }
     public WebSiteEvent(long customer_id, long product_id, long timestamp, float revenue, String type) {
 
         this.customer_id = customer_id;

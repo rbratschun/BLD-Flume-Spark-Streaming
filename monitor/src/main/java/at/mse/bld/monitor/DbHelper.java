@@ -16,11 +16,14 @@ import java.sql.*;
 
     static void getRecentEntries() throws Exception {
         Connection conn = connect();
+        System.out.println("*************** TOP TEN PRODUCTS *****************");
+        System.out.format("%10s | %10s | %10s | %10s%n", "Product", "Revenue", "Views", "Purchases");
         ResultSet resultSet = conn.createStatement().executeQuery(DbStatements.RecentEntries);
         while(resultSet.next()) {
             System.out.println(Entry.transform(resultSet));
         }
         conn.close();
+        System.out.println("**************************************************");
     }
 
     static void initialize() {

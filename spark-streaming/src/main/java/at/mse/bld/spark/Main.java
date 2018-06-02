@@ -9,11 +9,14 @@ import org.apache.spark.streaming.flume.FlumeUtils;
 import org.apache.spark.streaming.flume.SparkFlumeEvent;
 import org.apache.spark.streaming.api.java.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
         System.out.println("Preparing FlumeStream ...");
+        TimeUnit.SECONDS.sleep(10);
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("FlumeStreamingApp"); // default spark streaming setup
         JavaStreamingContext jsc = new JavaStreamingContext(sparkConf, new Duration(10_000)); // initialize with polling interval
         JavaReceiverInputDStream<SparkFlumeEvent> flumeStream = FlumeUtils.createStream(jsc, "0.0.0.0", 18020); // listen to port 18020
