@@ -15,6 +15,14 @@ public class WebSiteEvent {
         this.revenue = revenue;
     }
 
+    public WebSiteEvent(WebSiteEventBuilder builder) {
+        this.type = builder.type;
+        this.customer_id = builder.customer_id;
+        this.product_id = builder.product_id;
+        this.timestamp = builder.timestamp;
+        this.revenue = builder.revenue;
+    }
+
     public long getCustomer_id() {
         return customer_id;
     }
@@ -53,5 +61,43 @@ public class WebSiteEvent {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public static class WebSiteEventBuilder {
+        private long customer_id;
+        private long product_id;
+        private long timestamp;
+        private float revenue;
+        private String type;
+
+        public WebSiteEvent build() {
+            return new WebSiteEvent(this);
+        }
+
+        public WebSiteEventBuilder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public WebSiteEventBuilder customer(long customer_id) {
+            this.customer_id = customer_id;
+            return this;
+        }
+
+        public WebSiteEventBuilder product(long product) {
+            this.product_id = product;
+            return this;
+        }
+
+        public WebSiteEventBuilder timestamp(long timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public WebSiteEventBuilder revenue(float revenue) {
+            this.revenue = revenue;
+            return this;
+
+    }
     }
 }

@@ -8,11 +8,11 @@ public class Entry {
     private int purchases;
     private int views;
 
-    private Entry (long product_id, double revenue, int purchases, int views) {
+    private Entry (long product_id, double revenue, int views, int purchases) {
         this.product_id = product_id;
         this.revenue = revenue;
-        this.purchases = purchases;
         this.views = views;
+        this.purchases = purchases;
     }
 
     static Entry transform(ResultSet resultSet) throws Exception{

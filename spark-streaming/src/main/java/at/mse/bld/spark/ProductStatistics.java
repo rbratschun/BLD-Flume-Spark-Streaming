@@ -54,7 +54,7 @@ public class ProductStatistics implements Serializable {
     public static ProductStatistics transform(WebSiteEvent event) {
         return new ProductStatistics(
                 event.getProduct_id(),
-                event.getType().equals("purchase") ? event.getRevenue() : 0,
+                event.getRevenue(),
                 event.getType().equals("view") ? 1 : 0,
                 event.getType().equals("view") ? 0 : 1
         );
